@@ -55,7 +55,7 @@ def print_failed_fen(moves: List):
             break
         board.push(chess.Move.from_uci(move))
 
-    print(f"FEN: {board.board_fen()}")
+    print(f"FEN: {board.fen()}")
 
 def search_move_differences(stockfish: Engine, custom_engine: Engine, FEN: str, max_depth: int) -> bool:
     moves = []
