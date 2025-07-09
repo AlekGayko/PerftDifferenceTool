@@ -16,7 +16,7 @@ init()
 def print_move_diff(moves: dict, mismatch_moves: List):
     if len(mismatch_moves) > 0:
         print(Fore.RED + "Mismatched Moves:")
-        print(Fore.RED + " ".join(mismatch_moves) + Style.RESET_ALL)
+        print(Fore.RED + " ".join(mismatch_moves) + Style.RESET_ALL + '\n')
 
     for move, amount in moves.items():
         message = f"{move}: {amount}"
@@ -64,7 +64,7 @@ def search_move_differences(stockfish: Engine, custom_engine: Engine, FEN: str, 
     for depth in range(max_depth, 0, -1):
         print(f"{break_line}\n")
 
-        print(f"Depth: {depth} | FEN: {FEN}")
+        print(f"Depth: {depth} | FEN: {FEN}\n")
 
         stockfish.load_position(FEN, moves)
         custom_engine.load_position(FEN, moves)
@@ -73,7 +73,7 @@ def search_move_differences(stockfish: Engine, custom_engine: Engine, FEN: str, 
         print(f"Stockfish Perft: {perft1['nodes']}")
 
         perft2 = custom_engine.perft(depth)
-        print(f"Anonymous Engine Perft: {perft2['nodes']}")
+        print(f"Anonymous Engine Perft: {perft2['nodes']}\n")
         
         big_move, diff_moves, mismatch_moves = biggest_move_difference(perft1["moves"], perft2["moves"])
 
@@ -103,7 +103,7 @@ def search_move_differences(stockfish: Engine, custom_engine: Engine, FEN: str, 
 
 def print_start():
     print(f"{break_line}\n")
-    print("Perft Validator")
+    print("PERFT VALIDATOR")
     print(f"\n{break_line}\n")
 
 def print_end(result: bool):
@@ -112,7 +112,7 @@ def print_end(result: bool):
     if result is True:
         print(Fore.GREEN + f"Move Generation Validated" + Style.RESET_ALL)
     else:
-        print(Fore.RED + f"Move Generation Failed" + Style.RESET_ALL)
+        print(Fore.RED + f"Move Generation Invalid" + Style.RESET_ALL)
 
     print(f"\n{break_line}")
 
