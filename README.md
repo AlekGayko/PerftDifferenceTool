@@ -50,7 +50,7 @@ python3 main.py [ENGINE_PATH] [FEN] [DEPTH] [-v]
 
 | Argument      | Description                                                         |
 | ------------- | ------------------------------------------------------------------- |
-| `ENGINE_PATH` | Path to your UCI-compatible chess engine executable                 |
+| `ENGINE_PATH` | Absolute path to your UCI-compatible chess engine executable        |
 | `FEN`         | FEN string describing the board position                            |
 | `DEPTH`       | Depth for perft search (positive non-zero integer)                  |
 | `-v`          | *(Optional)* Enables verbose output for detailed difference tracing |

@@ -25,6 +25,16 @@ class Engine:
         # Set no blocking to eventually stop listening to process
         set_blocking(self.process.stdout.fileno(), False)
 
+    # Cleanup listening thread and terminate process    
+    def cleanup(self) -> None:
+        if self.process is not None:
+            self.process.terminate()
+            self.process = None
+            
+    # Destructor cleans up            
+    def __del__(self):
+        self.cleanup()
+
     def write_to_process(self, command: str):
         if self.verbose:
             print(f"Sending to {self.name}: {command}")

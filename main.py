@@ -88,7 +88,7 @@ def search_move_differences(stockfish: Engine, custom_engine: Engine, FEN: str, 
         
         success = False
 
-        if big_move[1] == 0:
+        if big_move[1] == 0 and len(mismatch_moves) == 0:
             print(Fore.RED + "Unequal Move Generation Resulted In Equal Move Counts" + Style.RESET_ALL)
             break
         
@@ -134,7 +134,7 @@ if __name__ == "__main__":
         raise ValueError("Missing Required Custom Engine Path")
     
     stockfish_path = f"{os.getcwd()}/Stockfish/stockfish"
-    custom_engine_path = f"{os.getcwd()}/{sys.argv[1]}"
+    custom_engine_path = sys.argv[1]
     FEN = sys.argv[2]
     depth = int(sys.argv[3])
 
