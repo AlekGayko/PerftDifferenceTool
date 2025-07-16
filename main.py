@@ -45,7 +45,7 @@ def biggest_move_difference(moves1: dict, moves2: dict):
             moves[move] = amount - moves2[move]
         else:
             moves[move] = amount
-    return [max(moves.items(), key=lambda x: x[1]), moves, mismatch_moves]
+    return [max(moves.items(), key=lambda x: abs(x[1])), moves, mismatch_moves]
 
 def print_failed_fen(moves: List):
     board = chess.Board()
